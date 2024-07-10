@@ -1,0 +1,254 @@
+<html><head><base href="https://websim.ai">
+<title>WebSim Video Player and Window with Wood Background</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
+    display: flex;
+  }
+  .content-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+  .window-container {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 22%;
+    height: 90vh;
+    border: 2px solid #543a0d;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .window-header {
+    background-color: #543a0d;
+    color: white;
+    padding: 5px 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+  }
+  .window-content {
+    height: calc(100% - 30px);
+  }
+  .window-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .video-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .video-wrapper {
+    width: 50%;
+    max-width: 600px;
+  }
+  .gif-container {
+    position: fixed;
+    right: 60px;
+    top: 30px;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 5px solid #543a0d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .gif-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  .black-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 9999;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .wood-background {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 0;
+  }
+  .plank {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .plank-1 { background-color: #4A3728; }
+  .plank-2 { background-color: #5D2E0C; }
+  .plank-3 { background-color: #6B3E23; }
+  .plank-4 { background-color: #8B5A2B; }
+  .grain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.15;
+  }
+  .grain-line {
+    position: absolute;
+    height: 1px;
+    background: rgba(0,0,0,0.3);
+    width: 20%;
+  }
+  .knot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.3);
+  }
+  .scratch {
+    position: absolute;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    transform: rotate(45deg);
+  }
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+  }
+</style>
+</head>
+<body>
+  <div class="black-overlay"></div>
+  <div class="wood-background">
+    <div class="plank plank-1"><div class="grain"></div></div>
+    <div class="plank plank-2"><div class="grain"></div></div>
+    <div class="plank plank-3"><div class="grain"></div></div>
+    <div class="plank plank-4"><div class="grain"></div></div>
+  </div>
+  <div class="content-container">
+    <div class="window-container">
+      <div class="window-header">
+  Chat <a href="https://websim.ai/c/bN89u393m137mHyom" target="_blank" style="color: white; text-decoration: none; float: right;">⇗</a>
+</div>
+      <div class="window-content">
+        <iframe src="https://websim.ai/c/bN89u393m137mHyom" title="WebSim Creation"></iframe>
+      </div>
+    </div>
+    <div class="video-container">
+      <div class="video-wrapper">
+        <script src="https://fast.wistia.com/embed/medias/5sabh5szdm.jsonp" async=""></script>
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async=""></script>
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+            <div class="wistia_embed wistia_async_5sabh5szdm seo=false videoFoam=true" style="height:100%;position:relative;width:100%">
+              <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                <img src="https://fast.wistia.com/embed/medias/5sabh5szdm/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gif-container">
+      <img src="https://raw.githubusercontent.com/BoniniF/Test/ab03a7f16b309cb4556f47fd05bdc1aa6dd09a36/IMG_3521.gif" alt="Looping GIF">
+    </div>
+  </div>
+  <script>
+    const overlay = document.querySelector('.black-overlay');
+    overlay.addEventListener('click', () => {
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.remove();
+      }, 500);
+    });
+
+    function createGrainLines() {
+      const planks = document.querySelectorAll('.plank');
+      
+      planks.forEach((plank) => {
+        for (let i = 0; i < 50; i++) {
+          const line = document.createElement('div');
+          line.classList.add('grain-line');
+          
+          const top = Math.random() * 100;
+          const left = Math.random() * 80;
+          const width = 5 + Math.random() * 25;
+          
+          line.style.top = `${top}%`;
+          line.style.left = `${left}%`;
+          line.style.width = `${width}%`;
+          line.style.animation = `fadeInOut ${3 + Math.random() * 4}s infinite`;
+          
+          plank.appendChild(line);
+        }
+      });
+    }
+
+    function createKnots() {
+      const planks = document.querySelectorAll('.plank');
+      
+      planks.forEach((plank) => {
+        const numKnots = 1 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < numKnots; i++) {
+          const knot = document.createElement('div');
+          knot.classList.add('knot');
+          
+          const size = 10 + Math.random() * 20;
+          const top = Math.random() * 100;
+          const left = Math.random() * 100;
+          
+          knot.style.width = `${size}px`;
+          knot.style.height = `${size}px`;
+          knot.style.top = `${top}%`;
+          knot.style.left = `${left}%`;
+          
+          plank.appendChild(knot);
+        }
+      });
+    }
+
+    function createScratches() {
+      const planks = document.querySelectorAll('.plank');
+      
+      planks.forEach((plank) => {
+        const numScratches = 3 + Math.floor(Math.random() * 5);
+        for (let i = 0; i < numScratches; i++) {
+          const scratch = document.createElement('div');
+          scratch.classList.add('scratch');
+          
+          const width = 20 + Math.random() * 60;
+          const top = Math.random() * 100;
+          const left = Math.random() * 100;
+          const angle = Math.random() * 180 - 90;
+          
+          scratch.style.width = `${width}px`;
+          scratch.style.top = `${top}%`;
+          scratch.style.left = `${left}%`;
+          scratch.style.transform = `rotate(${angle}deg)`;
+          
+          plank.appendChild(scratch);
+        }
+      });
+    }
+
+    createGrainLines();
+    createKnots();
+    createScratches();
+  </script>
+</body></html>
